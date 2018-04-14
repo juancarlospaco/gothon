@@ -15,15 +15,15 @@ Things that Ive tried and didnt work (year 2018, on Linux):
 - https://github.com/go-python/gopy/issues/83 (Python 2 only)
 - https://github.com/go-python/gopy/blob/master/gen.go#L81 (Python 2 only)
 - https://github.com/sbinet/go-python (Python 2 only)
-- https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/
-- http://pybindgen.readthedocs.io/en/latest/tutorial/#supported-python-versions
+- https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/ (Compiler Errors)
+- http://pybindgen.readthedocs.io/en/latest/tutorial/#supported-python-versions (Compiler Errors on obfuscated C)
 - Others I dont remember the links.
 
 
 # Requisites:
 
-- [Python 3.6+](http://python.org)
-- [Go 1.10+](http://golang.org)
+- [Python 3.6+](https://python.org)
+- [Go 1.10+](https://golang.org)
 
 
 ### Contributors:
