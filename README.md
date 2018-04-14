@@ -17,6 +17,7 @@ Things that Ive tried and didnt work (2018, Linux):
 - https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/ (Compiler Errors on embebed obfuscated C)
 - http://pybindgen.readthedocs.io/en/latest/tutorial/#supported-python-versions (Compiler Errors on obfuscated C)
 - https://hackernoon.com/extending-python-3-in-go-78f3a69552ac (All of the above)
+- Other solutions call Python from Go, the reverse of Gothon.
 - Others I dont remember the links.
 
 
@@ -30,7 +31,7 @@ $ python
 Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 
 >>> import gothon
->>> unemployed = gothon.GoWorker()
+>>> unemployed = gothon.Gothon()
 >>> worker = unemployed.start()
 >>> worker.call("Echo.Echo", "Hello from Python to Go")
 'Hello from Python to Go'
