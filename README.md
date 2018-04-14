@@ -75,6 +75,7 @@ Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
 >>> worker = unemployed.start()
 >>> worker.call("Echo.Echo", "Hello from Python to Go")
 'Hello from Python to Go'
+>>> worker.stop()
 >>>
 ```
 
