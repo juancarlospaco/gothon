@@ -44,19 +44,22 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 <details>
     <summary><b>gothon.py</b></summary>
 
-**Description:** foo bar.
+**Description:**
+Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
 
-**Arguments:** foo bar.
+**Arguments:**
+- `go_file` A GO file to compile and run as a python module, string type, defaults to `python_module.go`, required.
+- `startup_delay` A startup delay, after running the go file but before returning the RPC client to Python, float type, defaults to `0.1`, optional.
 
-**Keyword Arguments:** foo bar.
+**Keyword Arguments:** None.
 
-**Returns:** foo bar.
+**Returns:** `gothon.RPCJSONClient()` an custom IPC RPC.
 
-**Base Class:** foo bar.
+**Base Class:** `object`.
 
-**Type:** foo bar.
+**Type:** `object`.
 
-**Source Code file:** https://github.com/juancarlospaco/gothon#gothon
+**Source Code file:** https://github.com/juancarlospaco/gothon/blob/master/gothon.py
 
 | State              | OS          | Description |
 | ------------------ |:-----------:| -----------:|
@@ -67,6 +70,11 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 **Usage Example:**
 
 ```python
+>>> import gothon
+>>> unemployed = gothon.Gothon()
+>>> worker = unemployed.start()
+>>> worker.call("Echo.Echo", "Hello from Python to Go")
+'Hello from Python to Go'
 >>>
 ```
 
@@ -75,19 +83,19 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 <details>
     <summary><b>python_module.go</b></summary>
 
-**Description:** foo bar.
+**Description:** GO source code with functions that must be registered on an IPC RPC.
 
-**Arguments:** foo bar.
+**Arguments:** None.
 
-**Keyword Arguments:** foo bar.
+**Keyword Arguments:** None.
 
-**Returns:** foo bar.
+**Returns:** None from Python.
 
-**Base Class:** foo bar.
+**Base Class:** None from Python.
 
-**Type:** foo bar.
+**Type:** None from Python.
 
-**Source Code file:** https://github.com/juancarlospaco/gothon#gothon
+**Source Code file:** https://github.com/juancarlospaco/gothon/blob/master/python_module.go
 
 | State              | OS          | Description |
 | ------------------ |:-----------:| -----------:|
@@ -95,11 +103,7 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 | :white_check_mark: | **Os X**    | Works Ok    |
 | :white_check_mark: | **Windows** | Works Ok    |
 
-**Usage Example:**
-
-```python
->>>
-```
+**Usage Example:** Can NOT be used directly from Python or from itself.
 
 </details>
 
