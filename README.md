@@ -17,6 +17,19 @@ Things that Ive tried and didnt work (2018, Linux):
 - Others I dont remember the links.
 
 
+# Documentation
+
+<details>
+    <summary>Gothon.py</summary>
+
+</details>
+
+<details>
+    <summary>python_module.go</summary>
+
+</details>
+
+
 # Requisites
 
 - [Python 3.6+](https://python.org)
