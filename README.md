@@ -1,10 +1,8 @@
 # Gothon
 
-Python 3.6+ modules written on pure Go 1.10+. No CFFI, no CTypes, no CGo, no PyBindGen, just import *.go files from Python.
+Python 3.6+ modules written on pure Go 1.10+. No CFFI, no CTypes, no CGo, no PyBindGen, just import `*.go` files from Python.
 
 [![Python Version](https://img.shields.io/badge/Python-3-brightgreen.svg)](http://python.org)
-
-![screenshot](https://source.unsplash.com/6mwtDZUOFrw/850x420 "Illustrative Photo by https://unsplash.com/@jackdouglass")
 
 
 # Why
@@ -20,13 +18,13 @@ Things that Ive tried and didnt work (2018, Linux):
 - Others I dont remember the links.
 
 
-# Requisites:
+# Requisites
 
 - [Python 3.6+](https://python.org)
 - [Go 1.10+](https://golang.org)
 
 
-### Contributors:
+### Contributors
 
 - **Please Star this Repo on Github !**, it helps to show up faster on searchs.
 - [Help](https://help.github.com/articles/using-pull-requests) and more [Help](https://help.github.com/articles/fork-a-repo) and Interactive Quick [Git Tutorial](https://try.github.io).
@@ -34,11 +32,11 @@ Things that Ive tried and didnt work (2018, Linux):
 - Pull Requests for working passing unittests welcomed.
 
 
-### Licence:
+### Licence
 
 - BSD.
 
 
-### Ethics and Humanism Policy:
+### Ethics and Humanism Policy
 
 - Religions is not allowed. Contributing means you agree with the COC.
