@@ -20,12 +20,64 @@ Things that Ive tried and didnt work (2018, Linux):
 # Documentation
 
 <details>
-    <summary><b>Gothon.py</b></summary>
+    <summary><b>gothon.py</b></summary>
+
+**Description:** foo bar.
+
+**Arguments:** foo bar.
+
+**Keyword Arguments:** foo bar.
+
+**Returns:** foo bar.
+
+**Base Class:** foo bar.
+
+**Type:** foo bar.
+
+**Source Code file:** https://github.com/juancarlospaco/gothon#gothon
+
+| State              | OS          | Description |
+| ------------------ |:-----------:| -----------:|
+| :white_check_mark: | **Linux**   | Works Ok    |
+| :white_check_mark: | **Os X**    | Works Ok    |
+| :white_check_mark: | **Windows** | Works Ok    |
+
+**Usage Example:**
+
+```python
+>>>
+```
 
 </details>
 
 <details>
     <summary><b>python_module.go</b></summary>
+
+**Description:** foo bar.
+
+**Arguments:** foo bar.
+
+**Keyword Arguments:** foo bar.
+
+**Returns:** foo bar.
+
+**Base Class:** foo bar.
+
+**Type:** foo bar.
+
+**Source Code file:** https://github.com/juancarlospaco/gothon#gothon
+
+| State              | OS          | Description |
+| ------------------ |:-----------:| -----------:|
+| :white_check_mark: | **Linux**   | Works Ok    |
+| :white_check_mark: | **Os X**    | Works Ok    |
+| :white_check_mark: | **Windows** | Works Ok    |
+
+**Usage Example:**
+
+```python
+>>>
+```
 
 </details>
 
