@@ -88,7 +88,7 @@ Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
 
 **Arguments:** None.
 
-**Keyword Arguments:** None.
+**Keyword Arguments:** None from Python.
 
 **Returns:** None from Python.
 
@@ -98,13 +98,7 @@ Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
 
 **Source Code file:** https://github.com/juancarlospaco/gothon/blob/master/python_module.go
 
-| State              | OS          | Description |
-| ------------------ |:-----------:| -----------:|
-| :white_check_mark: | **Linux**   | Works Ok    |
-| :white_check_mark: | **Os X**    | Works Ok    |
-| :white_check_mark: | **Windows** | Works Ok    |
-
-**Usage Example:** Can NOT be used directly from Python or from itself.
+**Usage Example:** None from Python. Can NOT be used directly from Python or from itself.
 
 </details>
 
