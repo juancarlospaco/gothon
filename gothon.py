@@ -4,7 +4,7 @@
 
 """Gothon.
 
-Go Worker runs GO Code from Python using RPC-JSON (non-HTTP) & subprocess."""
+Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) & subprocess."""
 
 
 import json
@@ -19,7 +19,7 @@ from socket import create_connection as make_conect
 from time import sleep
 
 
-__all__ = ("GoWorker", )
+__all__ = ("Gothon", )
 
 
 class RPCJSONClient(object):
@@ -57,9 +57,9 @@ class RPCJSONClient(object):
         del self._soket, self._id, self._codec, self.recv
 
 
-class GoWorker(object):
+class Gothon(object):
 
-    """Go Worker using RPC-JSON Server (non-HTTP) and subprocess."""
+    """Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP)."""
 
     __slots__ = ("microservice", "startup_delay", "go", "rpc", "proces",
                  "close", "stop", "kill")
