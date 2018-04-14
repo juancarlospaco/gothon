@@ -20,12 +20,12 @@ Things that Ive tried and didnt work (2018, Linux):
 # Documentation
 
 <details>
-    <summary>Gothon.py</summary>
+    <summary><b>Gothon.py</b></summary>
 
 </details>
 
 <details>
-    <summary>python_module.go</summary>
+    <summary><b>python_module.go</b></summary>
 
 </details>
 
