@@ -61,20 +61,20 @@ class Gothon(object):
 
     """Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP)."""
 
-    __slots__ = ("microservice", "startup_delay", "go", "rpc", "proces",
+    __slots__ = ("go_file", "startup_delay", "go", "rpc", "proces",
                  "close", "stop", "kill")
 
-    def __init__(self, go_file="python_module.go", startup_delay=0.1):
-        self.microservice = Path(__file__).parent / go_file
+    def __init__(self, go_file: str=Path(__file__).parent / "python_module.go",
+                 startup_delay: float=0.1):
+        self.go_file, self.startup_delay = Path(go_file), float(startup_delay)
         self.go, self.rpc, self.proces = which("go"), None, None
-        self.close = self.stop = self.kill = self.__exit__
-        self.startup_delay = startup_delay
-        if self.go and self.microservice.is_file():
+        self.close = self.stop = self.kill = self.terminate = self.__exit__
+        if self.go and self.go_file.is_file():
             self._build()
 
     def _build(self):
         self.proces = subprocess.Popen(  # stackoverflow.com/a/4791612
-            f"{self.go} run {self.microservice}", stdout=subprocess.PIPE,
+            f"{self.go} run {self.go_file}", stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT, shell=True, preexec_fn=os.setpgrp)
 
     def start(self):
