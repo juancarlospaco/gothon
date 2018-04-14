@@ -9,7 +9,7 @@ Python 3.6+ modules written on pure Go 1.10+. No CFFI, no CTypes, no CGo, no PyB
 
 # Why
 
-Things that Ive tried and didnt work (year 2018, on Linux):
+Things that Ive tried and didnt work (2018, Linux):
 
 - https://blog.filippo.io/building-python-modules-with-go-1-5/ (Go 1.5 only)
 - https://github.com/go-python/gopy/issues/83 (Python 2 only)
