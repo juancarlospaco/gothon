@@ -58,7 +58,7 @@ class GoWorker(object):
 
     """Go Worker using RPC-JSON Server (non-HTTP) and subprocess."""
 
-    def __init__(self, microservice="microservice.go", startup_delay=0.1):
+    def __init__(self, microservice="python_module.go", startup_delay=0.1):
         self.microservice = Path(__file__).parent / microservice
         self.go, self.rpc, self.proces = which("go"), None, None
         self.close = self.stop = self.kill = self.__exit__
