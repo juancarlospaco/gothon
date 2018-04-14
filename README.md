@@ -15,7 +15,7 @@ Things that Ive tried and didnt work (year 2018, on Linux):
 - https://github.com/go-python/gopy/issues/83 (Python 2 only)
 - https://github.com/go-python/gopy/blob/master/gen.go#L81 (Python 2 only)
 - https://github.com/sbinet/go-python (Python 2 only)
-- https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/ (Compiler Errors)
+- https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/ (Compiler Errors on embebed obfuscated C)
 - http://pybindgen.readthedocs.io/en/latest/tutorial/#supported-python-versions (Compiler Errors on obfuscated C)
 - Others I dont remember the links.
 
