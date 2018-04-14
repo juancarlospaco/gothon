@@ -26,6 +26,8 @@ class RPCJSONClient(object):
 
     """RPC-JSON Client (non-HTTP)."""
 
+    __slots__ = ("adres", "codec", "recv", "_soket", "_id", "_codec", "close")
+
     def __init__(self, adres=("127.0.0.1", 5090), codec=json, recv=4096):
         self._soket, self._id, self._codec = make_conect(adres), count(), codec
         self.close, self.recv = self.__exit__, recv
@@ -52,11 +54,15 @@ class RPCJSONClient(object):
 
     def __exit__(self, *args, **kwargs):
         self._soket.close()
+        del self._soket, self._id, self._codec, self.recv
 
 
 class GoWorker(object):
 
     """Go Worker using RPC-JSON Server (non-HTTP) and subprocess."""
+
+    __slots__ = ("microservice", "startup_delay", "go", "rpc", "proces",
+                 "close", "stop", "kill")
 
     def __init__(self, microservice="python_module.go", startup_delay=0.1):
         self.microservice = Path(__file__).parent / microservice
