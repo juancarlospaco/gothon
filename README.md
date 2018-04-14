@@ -4,7 +4,7 @@ Python 3.6+ modules written on pure Go 1.10+. No CFFI, no CTypes, no CGo, no PyB
 
 [![Python Version](https://img.shields.io/badge/Python-3-brightgreen.svg)](http://python.org)
 
-![screenshot](https://source.unsplash.com/6mwtDZUOFrw/800x400 "Illustrative Photo by https://unsplash.com/@jackdouglass")
+![screenshot](https://source.unsplash.com/6mwtDZUOFrw/850x420 "Illustrative Photo by https://unsplash.com/@jackdouglass")
 
 
 # Why
