@@ -64,8 +64,8 @@ class Gothon(object):
     __slots__ = ("microservice", "startup_delay", "go", "rpc", "proces",
                  "close", "stop", "kill")
 
-    def __init__(self, microservice="python_module.go", startup_delay=0.1):
-        self.microservice = Path(__file__).parent / microservice
+    def __init__(self, go_file="python_module.go", startup_delay=0.1):
+        self.microservice = Path(__file__).parent / go_file
         self.go, self.rpc, self.proces = which("go"), None, None
         self.close = self.stop = self.kill = self.__exit__
         self.startup_delay = startup_delay
