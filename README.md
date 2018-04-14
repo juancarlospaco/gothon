@@ -1,8 +1,6 @@
 # Gothon
 
-Python 3.6+ modules written on pure Go 1.10+.
-
-No CFFI, no CTypes, no CGo, no PyBindGen, just import `*.go` files from Python. [![Python Version](https://img.shields.io/badge/Python-3-brightgreen.svg)](http://python.org)
+Python 3.6 modules written on pure Go 1.10. No CFFI, no CTypes, no CGo, no PyBindGen, just import `*.go` files from Python.
 
 
 # Why
