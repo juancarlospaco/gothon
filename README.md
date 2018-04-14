@@ -19,6 +19,24 @@ Things that Ive tried and didnt work (2018, Linux):
 - Others I dont remember the links.
 
 
+# Use
+
+```python
+$ ls
+gothon.py  python_module.go
+
+$ python
+Python 3.6.4 (default, Jan  5 2018, 02:35:40)
+
+>>> import gothon
+>>> unemployed = gothon.GoWorker()
+>>> worker = unemployed.start()
+>>> worker.call("Echo.Echo", "Hello from Python to Go")
+'Hello from Python to Go'
+>>>
+```
+
+
 # Documentation
 
 <details>
