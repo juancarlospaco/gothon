@@ -62,7 +62,7 @@ class Gothon(object):
     """Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP)."""
 
     __slots__ = ("go_file", "startup_delay", "go", "rpc", "proces",
-                 "close", "stop", "kill")
+                 "close", "stop", "kill", "terminate")
 
     def __init__(self, go_file: str=Path(__file__).parent / "python_module.go",
                  startup_delay: float=0.1):
