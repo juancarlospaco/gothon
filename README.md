@@ -2,7 +2,7 @@
 
 Python 3 modules written on pure Go. No CFFI, no CTypes, no CGo, no PyBindGen, just import `*.go` files from Python.
 
-Open Repo access to anyone who want to contribute, just contact me.
+Open Repo access to anyone who want to contribute, just contact me. **This is a Work In Progress.**
 
 
 # Why
