@@ -85,6 +85,7 @@ Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
     <summary><b>python_module.go</b></summary>
 
 **Description:** GO source code with functions that must be registered on an IPC RPC.
+This file is pure Go source, check Go Documentation for more info.
 
 **Arguments:** None.
 
