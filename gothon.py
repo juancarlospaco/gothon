@@ -8,15 +8,16 @@ Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) & subprocess."""
 
 
 import json
-import subprocess
 import os
 import signal
+import socket
+import subprocess
 
 from itertools import count
 from pathlib import Path
 from shutil import which
-from socket import create_connection as make_conect
 from time import sleep
+from uuid import uuid4
 
 
 __all__ = ("Gothon", )
@@ -24,37 +25,42 @@ __all__ = ("Gothon", )
 
 class RPCJSONClient(object):
 
-    """RPC-JSON Client (non-HTTP)."""
+    """RPC JSON Client (non-HTTP)."""
 
-    __slots__ = ("adres", "codec", "recv", "_soket", "_id", "_codec", "close")
+    __slots__ = ("socket_file", "_id", "socket")
 
-    def __init__(self, adres=("127.0.0.1", 5090), codec=json, recv=4096):
-        self._soket, self._id, self._codec = make_conect(adres), count(), codec
-        self.close, self.recv = self.__exit__, recv
-
-    def _message(self, name, *params):
-        return {"id": next(self._id), "params": tuple(params), "method": name}
+    def __init__(self, socket_file, codec):
+        self.socket_file = socket_file
+        self._id = count()
+        self.socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        self.socket.connect(self.socket_file)
 
     def call(self, name, *params):
-        request = self._message(name, *params)
-        _id = request.get('id')
-        self._soket.sendall(bytes(self._codec.dumps(request), "utf-8"))
+        mssg = {"id": next(self._id), "params": tuple(params), "method": name}
+        data = bytes(json.dumps(mssg, separators=(",", ":")), "utf-8")
+        self.socket.sendall(data)
+        print(f"Sent:     {data}")
+
         while True:
             try:
-                response = self._codec.loads(self._soket.recv(self.recv)).get
+                json_response = json.loads(self.socket.recv(8192))
+                if not json_response:
+                    break
             except Exception:
                 sleep(0.1)
             else:
                 break
-        if response('id') != _id:
+
+        response = json_response.get
+        if response('id') != mssg.get('id'):
             raise Exception(f"Expected ID={_id},received ID={response('id')}.")
-        if response('error') is not None:
+        elif response('error') is not None:
             raise Exception(f"{self.__class__.__name__}: {response('error')}.")
+        print(f"Received: {response('result')}")
         return response('result')
 
     def __exit__(self, *args, **kwargs):
         self._soket.close()
-        del self._soket, self._id, self._codec, self.recv
 
 
 class Gothon(object):
@@ -62,23 +68,28 @@ class Gothon(object):
     """Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP)."""
 
     __slots__ = ("go_file", "startup_delay", "go", "rpc", "proces",
-                 "close", "stop", "kill", "terminate")
+                 "close", "stop", "kill", "terminate", "socket_file")
 
     def __init__(self, go_file: str=Path(__file__).parent / "python_module.go",
                  startup_delay: float=0.1):
-        self.go_file, self.startup_delay = Path(go_file), float(startup_delay)
-        self.go, self.rpc, self.proces = which("go"), None, None
         self.close = self.stop = self.kill = self.terminate = self.__exit__
+        self.socket_file = f"/tmp/gothon-{uuid4().hex}.sock"
+        self.startup_delay = float(startup_delay)
+        self.go_file = Path(go_file)
+        self.go = which("go")
+        self.rpc, self.proces = None, None
         if self.go and self.go_file.is_file():
             self._build()
+        print(f"PID: {self.proces.pid}, Socket: {self.socket_file}")
 
     def _build(self):
         self.proces = subprocess.Popen(  # stackoverflow.com/a/4791612
-            f"{self.go} run {self.go_file}", stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT, shell=True, preexec_fn=os.setpgrp)
+            f"{self.go} run {self.go_file} {self.socket_file}",
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            shell=True, preexec_fn=os.setpgrp)
 
-    def start(self):
-        self.rpc = RPCJSONClient()
+    def start(self) -> RPCJSONClient:
+        self.rpc = RPCJSONClient(self.socket_file)
         sleep(self.startup_delay)
         return self.rpc
 
