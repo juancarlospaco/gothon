@@ -80,7 +80,7 @@ class RPCJSONClient(object):
 
     __slots__ = ("socket_file", "_id", "socket")
 
-    def __init__(self, socket_file, codec):
+    def __init__(self, socket_file):
         self.socket_file = socket_file
         self._id = count()
         self.socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
@@ -102,8 +102,8 @@ class RPCJSONClient(object):
             else:
                 break
 
-        response = json_response.get
-        if response('id') != mssg.get('id'):
+        response, _id = json_response.get, mssg.get('id')
+        if response('id') != _id:
             raise Exception(f"Expected ID={_id},received ID={response('id')}.")
         elif response('error') is not None:
             raise Exception(f"{self.__class__.__name__}: {response('error')}.")
@@ -111,7 +111,7 @@ class RPCJSONClient(object):
         return response('result')
 
     def __exit__(self, *args, **kwargs):
-        self._soket.close()
+        self.socket.close()
 
 
 class Gothon(object):
@@ -155,6 +155,6 @@ class Gothon(object):
         print(PYTHON_MODULE_GO_TEMPLATE)
 
     def __exit__(self, *args, **kwargs):
-        self.rpc._soket.close()
+        self.rpc.socket.close()
         self.proces.kill()
         os.killpg(os.getpgid(self.proces.pid), signal.SIGTERM)
