@@ -87,6 +87,7 @@ class RPCJSONClient(object):
         self.socket.connect(self.socket_file)
 
     def call(self, name, *params):
+        """RPC IPC Call to a Go function, return results or raise error."""
         mssg = {"id": next(self._id), "params": tuple(params), "method": name}
         data = bytes(json.dumps(mssg, separators=(",", ":")), "utf-8")
         self.socket.sendall(data)
@@ -134,24 +135,28 @@ class Gothon(object):
         print(f"PID: {self.proces.pid}, Socket: {self.socket_file}")
 
     def _build(self):
+        """Run Go code using 'go run' passing the Unix Socket as argument. """
         self.proces = subprocess.Popen(  # stackoverflow.com/a/4791612
             f"{self.go} run {self.go_file} {self.socket_file}",
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
             shell=True, preexec_fn=os.setpgrp)
 
     def start(self) -> RPCJSONClient:
+        """Start the RPC IPC Python Client side."""
         self.rpc = RPCJSONClient(self.socket_file)
         sleep(self.startup_delay)
         return self.rpc
 
     @staticmethod
     def clean():
+        """Simple helper function to clean stale unused Unix Socket files."""
         for file2clean in iglob("/tmp/gothon-*.sock"):
             print(f"Deleted old stale unused Unix Socket file: {file2clean}")
             Path(file2clean).unlink()
 
     @staticmethod
     def template():
+        """Helper function to print a Go code Template to start hacking into."""
         print(PYTHON_MODULE_GO_TEMPLATE)
 
     def __exit__(self, *args, **kwargs):
