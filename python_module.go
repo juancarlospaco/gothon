@@ -1,6 +1,7 @@
 package main
 
 import (
+    "os"
 	"log"
 	"net"
 	"net/rpc"
@@ -21,7 +22,7 @@ func main() {
 	hello := new(Echo)
 	rpc.Register(hello)
 
-	listener, errors := net.Listen("tcp", "127.0.0.1:5090")
+	listener, errors := net.Listen("unix", os.Args[1])
 	defer listener.Close()
 
 	if errors != nil {
