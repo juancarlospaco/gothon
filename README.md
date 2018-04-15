@@ -51,6 +51,10 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
 Unix Socket are used because from benchmarks it performs 3x faster than TCP/UDP Sockets.
 
+This project is oriented to Developers, NOT end-users.
+This project can be used with Fades, FireJails, Docker, RKT.
+Feel free to contact us if you need help integrating it on your project.
+
 **Arguments:**
 - `go_file` A GO file to compile and run as a python module, string type, defaults to `python_module.go`, required.
 - `startup_delay` A startup delay, after running the go file but before returning the RPC client to Python, float type, defaults to `0.1`, optional.
