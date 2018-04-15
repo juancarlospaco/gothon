@@ -24,6 +24,56 @@ from uuid import uuid4
 __all__ = ("Gothon", )
 
 
+PYTHON_MODULE_GO_TEMPLATE = """
+package main
+
+import (
+	"log"
+	"net"
+	"net/rpc"
+	"net/rpc/jsonrpc"
+	"os"
+)
+
+// Define Functions here.
+type Echo int
+
+func (h *Echo) Echo(arg *string, reply *string) error {
+	log.Println("received: ", *arg)
+	*reply = *arg
+	return nil
+}
+
+func main() {
+	// Register Functions on the RPC here.
+	hello := new(Echo)
+	rpc.Register(hello)
+
+	listener, errors := net.Listen("unix", os.Args[1])
+	defer listener.Close()
+
+	if errors != nil {
+		log.Fatal(errors)
+	}
+
+	log.Print("Listening for RPC-JSON connections: ", listener.Addr())
+
+	for {
+		log.Print("Waiting for RPC-JSON connections...")
+		conection, errors := listener.Accept()
+
+		if errors != nil {
+			log.Printf("Accept error: %s", conection)
+			continue
+		}
+
+		log.Printf("Connection started: %v", conection.RemoteAddr())
+		go jsonrpc.ServeConn(conection)
+	}
+}
+"""
+
+
 class RPCJSONClient(object):
 
     """RPC JSON Client (non-HTTP)."""
@@ -94,10 +144,15 @@ class Gothon(object):
         sleep(self.startup_delay)
         return self.rpc
 
-    def clean(self):
+    @staticmethod
+    def clean():
         for file2clean in iglob("/tmp/gothon-*.sock"):
             print(f"Deleted old stale unused Unix Socket file: {file2clean}")
             Path(file2clean).unlink()
+
+    @staticmethod
+    def template():
+        print(PYTHON_MODULE_GO_TEMPLATE)
 
     def __exit__(self, *args, **kwargs):
         self.rpc._soket.close()
