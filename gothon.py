@@ -13,6 +13,7 @@ import signal
 import socket
 import subprocess
 
+from glob import iglob
 from itertools import count
 from pathlib import Path
 from shutil import which
@@ -92,6 +93,11 @@ class Gothon(object):
         self.rpc = RPCJSONClient(self.socket_file)
         sleep(self.startup_delay)
         return self.rpc
+
+    def clean(self):
+        for file2clean in iglob("/tmp/gothon-*.sock"):
+            print(f"Deleted old stale unused Unix Socket file: {file2clean}")
+            Path(file2clean).unlink()
 
     def __exit__(self, *args, **kwargs):
         self.rpc._soket.close()
