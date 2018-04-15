@@ -23,7 +23,7 @@ Things that Ive tried and didnt work (2018, Linux):
 
 # Use
 
-```python-traceback
+```python
 $ ls
 gothon.py  python_module.go
 
