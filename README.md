@@ -2,8 +2,9 @@
 
 Python 3 modules written on pure Go. No CFFI, no CTypes, no CGo, no PyBindGen, just import `*.go` files from Python.
 
+It works using IPC RPC. Inspired by Cythons `pyximport`. Designed to speed up Python using Go.
+
 Open Repo access to anyone who want to contribute, just contact me.
-It works using IPC RPC. Inspired by Cythons `pyximport`.
 
 **This is a Work In Progress.**
 
