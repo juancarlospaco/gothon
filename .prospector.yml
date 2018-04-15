@@ -1,0 +1,72 @@
+
+output-format: grouped
+# autodetect: false
+strictness: veryhigh
+doc-warnings: true
+test-warnings: false
+max-line-length: 80
+
+ignore-paths:
+  - docs/
+  - tests/
+  - examples/
+
+# ignore-patterns:
+#   - (^|/)skip(this)?(/|$)
+
+frosted:
+  run: false
+
+pyroma:
+  run: false
+
+pylint:
+  run: false
+  disable:
+    - missing-docstring
+    # - bad-builtin
+    # - too-few-public-methods
+    # - star-args
+    # - method-hidden
+    # - access-member-before-definition
+
+pep8:
+  full: true
+  disable:
+    - E501
+    - D101
+    - D102
+    - D105
+    - E121
+    - E123
+    - E126
+    - E226
+    - E24
+    - E704
+    - W503
+    - W504
+    - N813
+    - E731
+  options:
+    max-line-length: 80
+
+pep257:
+  run: false
+  disable:
+    - D100
+    - D101
+    - D102
+    - D103
+    - D205
+    - D400
+    - D401
+    - D211
+    - D204
+    - D107
+    - D202
+    - D105
+    - D209
+    - D213
+
+mccabe:
+  run: false
