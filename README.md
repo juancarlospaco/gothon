@@ -46,6 +46,7 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 
 **Description:**
 Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
+Unix Socket are used because from benchmarks it performs 3x faster than TCP/UDP Sockets.
 
 **Arguments:**
 - `go_file` A GO file to compile and run as a python module, string type, defaults to `python_module.go`, required.
@@ -65,7 +66,6 @@ Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
 | ------------------ |:-----------:| -----------:|
 | :white_check_mark: | **Linux**   | Works Ok    |
 | :white_check_mark: | **Os X**    | Works Ok    |
-| :white_check_mark: | **Windows** | Works Ok    |
 
 **Usage Example:**
 
