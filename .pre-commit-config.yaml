@@ -1,0 +1,52 @@
+# Automagic Multi-Language Static Analysis on Commit, before Push.
+# Install on local:         pip install pre-commit pre-commit-hooks
+# Use in C.I.;Force Run:    pre-commit run --all-files
+# Auto-Update all hooks:    pre-commit autoupdate
+# Run all hooks on Push:    pre-commit install --hook-type pre-push
+# Run all hooks on Commit:  pre-commit install
+# Drop all hooks on Push:   pre-commit uninstall --hook-type pre-push
+# Drop all hooks on Commit: pre-commit uninstall
+# http://pre-commit.com     https://github.com/pre-commit
+
+
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    sha: master  #  v0.9.1  # Or SemVer of latest release. Or SHA1.
+    minimum_pre_commit_version: 0.16.2  # From: pre-commit --version
+    description: Static analysis to check files for best practices.
+    stages: [commit, push]  # When to run.
+    hooks:
+    -   id: end-of-file-fixer        # Check that Text files ends with new line.
+    -   id: trailing-whitespace      # Check for empty trailing white spaces.
+    -   id: check-added-large-files  # Check for Text files > 500 Kilobytes.
+    -   id: check-byte-order-marker  # Check for BOM byte-order marker on files.
+    -   id: check-case-conflict      # Check conflicts for case-insensitive FS.
+    -   id: check-docstring-first    # Check for DocStrings placement (if any).
+    -   id: check-merge-conflict     # Check for committing Unmerged files.
+    -   id: check-symlinks           # Check for SymLinks pointing nowhere.
+    -   id: debug-statements         # Check for pdb/ipdb breakpoints in code.
+    -   id: fix-encoding-pragma      # Add # -*- coding: utf-8 -*- to .py files.
+    -   id: requirements-txt-fixer   # Alphabetically sorts requirements.txt
+    -   id: check-ast                # Check for Invalid Broken Python code.
+    -   id: detect-private-key       # Check for committing Private Keys.
+    -   id: forbid-new-submodules    # Prevent addition of new Git SubModules.
+    -   id: check-executables-have-shebangs  # Check if executable have SheBang.
+    -   id: check-json               # Check JSON files are valid (if any).
+    -   id: check-yaml               # Check YAML files are valid (if any).
+    -   id: check-xml                # Check XML files are valid (if any).
+    -   id: flake8                   # Lint all Python files using Flake8.
+        args: ['--statistics', '--ignore=E501,D101,D102,D105,E121,E123,E126,E226,E24,E704,W503,W504,E731']
+    -   id: autopep8-wrapper         # Fix all PEP8 Lint Errors on Python files.
+        args: ['--in-place', '--list-fixes', '--ignore=E501,D101,D102,D105,E121,E123,E126,E226,E24,E704,W503,W504,E731']
+
+
+-   repo: git://github.com/FalconSocial/pre-commit-python-sorter
+    sha: master
+    hooks:
+    -   id: python-import-sorter
+        args: ['--silent-overwrite']
+
+
+# -   repo: git://github.com/guykisel/prospector-mirror
+#     sha: master
+#     hooks:
+#     -   id: prospector
