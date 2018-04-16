@@ -52,7 +52,11 @@ Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
 Unix Socket are used because from benchmarks it performs 3x faster than TCP/UDP Sockets.
 
 This project is oriented to Developers, NOT end-users.
+
 This project can be used with Fades, FireJails, Docker, RKT.
+
+This project assumes at least very basic knowledge of the Go programming language.
+
 Feel free to contact us if you need help integrating it on your project.
 
 **Arguments:**
