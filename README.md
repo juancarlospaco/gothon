@@ -88,28 +88,6 @@ Feel free to contact us if you need help integrating it on your project.
 
 </details>
 
-<details>
-    <summary><b>python_module.go</b></summary>
-
-**Description:** GO source code with functions that must be registered on an IPC RPC.
-This file is pure Go source, check Go Documentation for more info.
-
-**Arguments:** None.
-
-**Keyword Arguments:** None from Python.
-
-**Returns:** None from Python.
-
-**Base Class:** None from Python.
-
-**Type:** None from Python.
-
-**Source Code file:** https://github.com/juancarlospaco/gothon/blob/master/python_module.go
-
-**Usage Example:** None from Python. Can NOT be used directly from Python or from itself.
-
-</details>
-
 
 # Requisites
 
