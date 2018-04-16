@@ -12,6 +12,7 @@ import os
 import signal
 import socket
 import subprocess
+import sys
 
 from glob import iglob
 from itertools import count
@@ -21,56 +22,56 @@ from time import sleep
 from uuid import uuid4
 
 
-__version__ = "1.0.0"
-__all__ = ("Gothon", )
+__version__ = "0.5.0"
+__all__ = ("Gothon", "GoImporter", "PYTHON_MODULE_GO_TEMPLATE")
 
 
 PYTHON_MODULE_GO_TEMPLATE = """
 package main
 
 import (
-	"log"
-	"net"
-	"net/rpc"
-	"net/rpc/jsonrpc"
-	"os"
+    "log"
+    "net"
+    "net/rpc"
+    "net/rpc/jsonrpc"
+    "os"
 )
 
 // Define Functions here.
 type Echo int
 
 func (h *Echo) Echo(arg *string, reply *string) error {
-	log.Println("received: ", *arg)
-	*reply = *arg
-	return nil
+    log.Println("received: ", *arg)
+    *reply = *arg
+    return nil
 }
 
 func main() {
-	// Register Functions on the RPC here.
-	hello := new(Echo)
-	rpc.Register(hello)
+    // Register Functions on the RPC here.
+    hello := new(Echo)
+    rpc.Register(hello)
 
-	listener, errors := net.Listen("unix", os.Args[1])
-	defer listener.Close()
+    listener, errors := net.Listen("unix", os.Args[1])
+    defer listener.Close()
 
-	if errors != nil {
-		log.Fatal(errors)
-	}
+    if errors != nil {
+        log.Fatal(errors)
+    }
 
-	log.Print("Listening for RPC-JSON connections: ", listener.Addr())
+    log.Print("Listening for RPC-JSON connections: ", listener.Addr())
 
-	for {
-		log.Print("Waiting for RPC-JSON connections...")
-		conection, errors := listener.Accept()
+    for {
+        log.Print("Waiting for RPC-JSON connections...")
+        conection, errors := listener.Accept()
 
-		if errors != nil {
-			log.Printf("Accept error: %s", conection)
-			continue
-		}
+        if errors != nil {
+            log.Printf("Accept error: %s", conection)
+            continue
+        }
 
-		log.Printf("Connection started: %v", conection.RemoteAddr())
-		go jsonrpc.ServeConn(conection)
-	}
+        log.Printf("Connection started: %v", conection.RemoteAddr())
+        go jsonrpc.ServeConn(conection)
+    }
 }
 """
 
@@ -164,3 +165,56 @@ class Gothon(object):
         self.rpc.socket.close()
         self.proces.kill()
         os.killpg(os.getpgid(self.proces.pid), signal.SIGTERM)
+
+
+##############################################################################
+
+
+class GoImporter(object):
+
+    """Custom Importer to just import Go *.go files as Python modules."""
+
+    def __init__(self, *args, **kwargs):
+        self.module_names = args
+        self.go_path = None  # Confirmed path of the *.go file.
+
+    def find_module(self, fullname, path=None):
+        if fullname in self.module_names:
+            self.go_path = str(path)
+            return self
+
+        possible_module_paths = (
+            Path(fullname + ".go"),
+            Path(".") / f"{fullname}.go",
+            Path(fullname).with_suffix(".go"),
+            Path(fullname.split('.')[-1] + ".go"),
+            Path(fullname.replace('.', os.sep)).with_suffix(".go"))
+
+        if path is not None:
+            possible_module_paths += (
+                Path(path),
+                Path(path + ".go"),
+                Path(".") / f"{path}.go",
+                Path(path).with_suffix(".go"),
+                Path(path) / f"{fullname.split('.')[-1]}.go")
+
+        for path2check in possible_module_paths:
+            if path2check.is_file() and path2check.suffix == ".go":
+                self.go_path = str(path2check)
+                return self
+
+        return None  # It cant Find the module.
+
+    def load_module(self, fullname):
+        if fullname in sys.modules:
+            return sys.modules.get(fullname)
+        module = Gothon(go_file=self.go_path)
+        sys.modules[fullname] = module
+        return module
+
+
+go_importer = GoImporter()
+sys.path_hooks.insert(0, go_importer)
+sys.meta_path.insert(0, go_importer)
+# sys.path_hooks = [go_importer]  # Kind of more "strict" mode.
+# sys.meta_path = [go_importer]
