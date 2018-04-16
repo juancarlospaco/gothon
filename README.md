@@ -48,8 +48,13 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
     <summary><b>gothon.py</b></summary>
 
 **Description:**
-Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP) and subprocess.
+Gothon runs GO Code from Python using IPC RPC JSON.
+
 Unix Socket are used because from benchmarks it performs 3x faster than TCP/UDP Sockets.
+
+This does not connect to the network, nor internet, nor use HTTP.
+
+Delegates the Parse, Compile, Build and Cache to Go itself.
 
 This project is oriented to Developers, NOT end-users.
 
