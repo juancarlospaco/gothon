@@ -30,7 +30,19 @@
 ALL THE CONFIG LIVES IN SETUP.CFG,PLEASE EDIT THERE,KEEP IT SIMPLE AND CLEAN."""
 
 
+import sys
+
 from setuptools import setup
+from shutil import which
+
+
+if not which("go"):
+    print("WARNING: GO not found, please install Go 1.10+.")
+    sys.exit(42)
+
+if sys.platform.startswith("win"):
+    print("WARNING: Windows is not supported at this time, please install Linux.")
+    sys.exit(42)
 
 
 setup(py_modules=["gothon"])
