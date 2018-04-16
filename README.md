@@ -33,9 +33,9 @@ gothon.py  python_module.go
 $ python
 Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 
->>> import gothon
->>> unemployed = gothon.Gothon()
->>> worker = unemployed.start()
+>>> import gothon                   # Import Gothon.
+>>> import python_module            # Import *.go files.
+>>> worker = python_module.start()  # Profit!.
 >>> worker.call("Echo.Echo", "Hello from Python to Go")
 'Hello from Python to Go'
 >>>
@@ -77,8 +77,8 @@ Feel free to contact us if you need help integrating it on your project.
 **Usage Example:**
 
 ```python
->>> import gothon
->>> unemployed = gothon.Gothon()
+>>> from gothon import Gothon
+>>> unemployed = Gothon()
 >>> worker = unemployed.start()
 >>> worker.call("Echo.Echo", "Hello from Python to Go")
 'Hello from Python to Go'
@@ -116,6 +116,17 @@ This file is pure Go source, check Go Documentation for more info.
 - [Python 3.6+](https://python.org)
 - [Go 1.10+](https://golang.org)
 
+
+##### Troubleshoot
+
+<details>
+    <summary>Not working</summary>
+
+- Delete all `__pycache__` and `*.pyc`.
+- Execute `go clean -x -cache` (Usually Go takes care of cleaning Cache automatically).
+- Update your Go to the latest version.
+- Add to your main Python script `sys.dontwritebytecode = True`.
+</details>
 
 ### Contributors
 
