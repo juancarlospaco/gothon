@@ -164,7 +164,9 @@ class Gothon(object):
         print(PYTHON_MODULE_GO_TEMPLATE)
 
     def __repr__(self):
-        return f"<Gothon object {id(self)} from {self.go_file}>"
+        return (
+            f"<Gothon object {id(self)}, {sys.getsizeof(self)} Bytes, Compiled"
+            f" by {self.go}, RPC via {self.socket_file}, from {self.go_file}>")
 
     def __exit__(self, *args, **kwargs):
         self.rpc.socket.close()
