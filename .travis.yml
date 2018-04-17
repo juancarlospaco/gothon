@@ -10,7 +10,7 @@ install:
 script:
   - python setup.py bdist_egg bdist_wheel --universal sdist --formats=zip
   - prospector gothon.py
-  # - python -m unittest --verbose --locals tests.TestFields
+  - python -m unittest --verbose --locals tests.TestGothon
 
 
 notifications:
