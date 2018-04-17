@@ -45,4 +45,4 @@ if sys.platform.startswith("win"):
     sys.exit(42)
 
 
-setup()
+setup(py_modules=["gothon"])
