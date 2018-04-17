@@ -36,7 +36,11 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 >>> import gothon                   # Import & enable Gothon.
 >>> gothon.import_hook()
 >>> import python_module            # Import *.go files.
->>> worker = python_module.start()  # Profit!.
+>>> repr(python_module)
+'<Gothon object 140066220608272 from python_module.go>'
+>>> python_module.__doc__
+'Gothon runs GO Code from Python using IPC RPC JSON.'
+>>> worker = python_module.start()
 >>> worker.call("Echo.Echo", "Hello from Python to Go")
 'Hello from Python to Go'
 >>>
