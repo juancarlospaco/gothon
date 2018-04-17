@@ -145,6 +145,7 @@ Things that Ive tried and didnt work (2018, Linux):
 - https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/ (Compiler Errors on embebed obfuscated C)
 - http://pybindgen.readthedocs.io/en/latest/tutorial/#supported-python-versions (Compiler Errors on obfuscated C)
 - https://hackernoon.com/extending-python-3-in-go-78f3a69552ac (All of the above)
+- https://medium.com/learning-the-go-programming-language/calling-go-functions-from-other-languages-4c7d8bcc69bf (Go 1.5 only)
 - Other solutions call Python from Go, the reverse of Gothon.
 - Others I dont remember the links.
 
