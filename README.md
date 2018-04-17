@@ -147,7 +147,7 @@ Things that Ive tried and didnt work (2018, Linux):
 - https://hackernoon.com/extending-python-3-in-go-78f3a69552ac (All of the above)
 - https://medium.com/learning-the-go-programming-language/calling-go-functions-from-other-languages-4c7d8bcc69bf (Go 1.5 only)
 - Other solutions call Python from Go, the reverse of Gothon.
-- Others I dont remember the links.
+- Others I dont remember the links. No [KISS](https://en.wikipedia.org/wiki/KISS_principle) solution.
 
 
 ### Contributors
