@@ -2,7 +2,7 @@
 
 Python 3 modules written on pure Go. No CFFI, no CTypes, no CGo, no PyBindGen, just import `*.go` files from Python.
 
-It works using IPC RPC. Inspired by [Cythons `pyximport`](http://cython.readthedocs.io/en/latest/src/tutorial/cython_tutorial.html?highlight=pyximport#pyximport-cython-compilation-for-developers) and [CPPImport](https://github.com/tbenthompson/cppimport#import-c-or-c-files-directly-from-python). Designed to speed up Python using Go.
+It works using RPC. Inspired by [Cythons `pyximport`](http://cython.readthedocs.io/en/latest/src/tutorial/cython_tutorial.html?highlight=pyximport#pyximport-cython-compilation-for-developers) and [CPPImport](https://github.com/tbenthompson/cppimport#import-c-or-c-files-directly-from-python). Designed to speed up Python using Go. [![Build Status](https://travis-ci.org/juancarlospaco/gothon.svg?branch=master)](https://travis-ci.org/juancarlospaco/gothon)
 
 Open Repo access to anyone who want to contribute, just contact me. **This is a Work In Progress.**
 
