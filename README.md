@@ -30,6 +30,7 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 'Hello from Python to Go'
 >>>
 ```
+- [The Echo Function is written in Go.](https://github.com/juancarlospaco/gothon/blob/master/python_module.go#L14-L18)
 
 
 # Install
