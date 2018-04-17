@@ -71,7 +71,7 @@ Feel free to contact us if you need help integrating it on your project.
 
 **Arguments:**
 - `go_file` A GO file to compile and run as a python module, string type, defaults to `python_module.go`, required.
-- `startup_delay` A startup delay, after building the go file but before returning the IPC RPC to Python, float type, defaults to `0.1`, optional.
+- `startup_delay` A startup delay, after building the go file but before returning the IPC RPC to Python, float type, defaults to `0.1`, can be set to `0.0` too, can not be `None`, optional.
 
 **Keyword Arguments:** None.
 
