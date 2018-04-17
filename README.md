@@ -9,21 +9,6 @@ Open Repo access to anyone who want to contribute, just contact me. **This is a 
 ![screenshot](https://source.unsplash.com/FqkBXo2Nkq0/850x420 "Illustrative Photo by https://unsplash.com/@stickermule")
 
 
-# Why
-
-Things that Ive tried and didnt work (2018, Linux):
-
-- https://blog.filippo.io/building-python-modules-with-go-1-5/ (Go 1.5 only)
-- https://github.com/go-python/gopy/issues/83 (Python 2 only)
-- https://github.com/go-python/gopy/blob/master/gen.go#L81 (Python 2 only)
-- https://github.com/sbinet/go-python (Python 2 only)
-- https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/ (Compiler Errors on embebed obfuscated C)
-- http://pybindgen.readthedocs.io/en/latest/tutorial/#supported-python-versions (Compiler Errors on obfuscated C)
-- https://hackernoon.com/extending-python-3-in-go-78f3a69552ac (All of the above)
-- Other solutions call Python from Go, the reverse of Gothon.
-- Others I dont remember the links.
-
-
 # Use
 
 ```python
@@ -118,6 +103,22 @@ Feel free to contact us if you need help integrating it on your project.
 - Execute `go clean -x -cache` (Usually Go takes care of cleaning Cache automatically).
 - Update your Go to the latest version.
 </details>
+
+
+# Why
+
+Things that Ive tried and didnt work (2018, Linux):
+
+- https://blog.filippo.io/building-python-modules-with-go-1-5/ (Go 1.5 only)
+- https://github.com/go-python/gopy/issues/83 (Python 2 only)
+- https://github.com/go-python/gopy/blob/master/gen.go#L81 (Python 2 only)
+- https://github.com/sbinet/go-python (Python 2 only)
+- https://dustymabe.com/2016/09/13/sharing-a-go-library-to-python-using-cffi/ (Compiler Errors on embebed obfuscated C)
+- http://pybindgen.readthedocs.io/en/latest/tutorial/#supported-python-versions (Compiler Errors on obfuscated C)
+- https://hackernoon.com/extending-python-3-in-go-78f3a69552ac (All of the above)
+- Other solutions call Python from Go, the reverse of Gothon.
+- Others I dont remember the links.
+
 
 ### Contributors
 
