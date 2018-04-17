@@ -50,6 +50,10 @@ Gothon runs GO Code from Python using IPC RPC JSON.
 
 Delegates the Parse, Compile, Build and Cache to Go itself.
 
+If you Upgrade your Go version you dont have to change anything on Gothon, it just works.
+
+If you Upgrade your Python version you dont have to change anything on Gothon, it just works.
+
 Unix Socket are used because from benchmarks it performs 3x faster than TCP/UDP Sockets.
 
 This does not connect to the network, nor internet, nor use HTTP.
