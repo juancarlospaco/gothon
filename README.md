@@ -43,22 +43,25 @@ pip install gothon
 # Documentation
 
 <details>
-    <summary><b>gothon.py</b></summary>
+    <summary><b>gothon.Gothon()</b></summary>
 
 **Description:**
 Gothon runs GO Code from Python using IPC RPC JSON.
 
+Delegates the Parse, Compile, Build and Cache to Go itself.
+
 Unix Socket are used because from benchmarks it performs 3x faster than TCP/UDP Sockets.
 
 This does not connect to the network, nor internet, nor use HTTP.
-
-Delegates the Parse, Compile, Build and Cache to Go itself.
 
 This project is oriented to Developers, NOT end-users.
 
 This project can be used with Fades, FireJails, Docker, RKT.
 
 This project assumes at least very basic knowledge of the Go programming language.
+
+Its recommended to have 1 `*.go` file importable from Python for project or package,
+the `*.go` file itself can import Go functions from other `*.go` files using Go way of importing stuff.
 
 Feel free to contact us if you need help integrating it on your project.
 
@@ -92,6 +95,19 @@ Feel free to contact us if you need help integrating it on your project.
 >>> worker.stop()
 >>>
 ```
+
+**Helper Static Methods:**
+
+- `gothon.Gothon().template()`
+
+Prints to standard output a Go source code template to start hacking into,
+with all bits and pieces to write a Python module using Go,
+it has 1 "Echo" function that you can overwrite or delete,
+this Go source code is ready to run as-is.
+
+- `gothon.Gothon().clean()`
+
+Clean up the Cache, uses `glob.iglob()` and `pathlib.Path().unlink()`, its very fast.
 
 </details>
 
