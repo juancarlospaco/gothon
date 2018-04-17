@@ -32,6 +32,14 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 ```
 
 
+# Install
+
+```
+pip install gothon
+```
+- Uninstall `pip uninstall gothon`
+
+
 # Documentation
 
 <details>
