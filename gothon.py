@@ -80,7 +80,7 @@ class RPCJSONClient(object):
 
     """RPC JSON Client (non-HTTP)."""
 
-    __slots__ = ("socket_file", "_id", "socket")
+    __slots__ = ("socket_file", "_id", "socket", "__repr__")
 
     def __init__(self, socket_file):
         self.socket_file = socket_file
@@ -119,7 +119,7 @@ class RPCJSONClient(object):
 
 class Gothon(object):
 
-    """Gothon runs GO Code from Python using IPC RPC JSON (non-HTTP)."""
+    """Gothon runs GO Code from Python using IPC RPC JSON."""
 
     __slots__ = ("go_file", "startup_delay", "go", "rpc", "proces",
                  "close", "stop", "kill", "terminate", "socket_file")
@@ -146,6 +146,8 @@ class Gothon(object):
     def start(self) -> RPCJSONClient:
         """Start the RPC IPC Python Client side."""
         self.rpc = RPCJSONClient(self.socket_file)
+        self.rpc.__doc__ = self.__doc__
+        self.rpc.__repr__ = self.__repr__
         sleep(self.startup_delay)
         return self.rpc
 
@@ -160,6 +162,9 @@ class Gothon(object):
     def template():
         """Helper function to print a Go code Template to start hacking into."""
         print(PYTHON_MODULE_GO_TEMPLATE)
+
+    def __repr__(self):
+        return f"<Gothon object {id(self)} from {self.go_file}>"
 
     def __exit__(self, *args, **kwargs):
         self.rpc.socket.close()
