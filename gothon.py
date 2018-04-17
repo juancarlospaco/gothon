@@ -190,7 +190,7 @@ class GoImporter(object):
             Path(fullname.split('.')[-1] + ".go"),
             Path(fullname.replace('.', os.sep)).with_suffix(".go"))
 
-        if path is not None:
+        if isinstance(path, str) and len(path):
             possible_module_paths += (
                 Path(path),
                 Path(path + ".go"),
@@ -213,8 +213,11 @@ class GoImporter(object):
         return module
 
 
-go_importer = GoImporter()
-sys.path_hooks.insert(0, go_importer)
-sys.meta_path.insert(0, go_importer)
-# sys.path_hooks = [go_importer]  # Kind of more "strict" mode.
-# sys.meta_path = [go_importer]
+def import_hook():
+    """Enable importing *.go files."""
+    go_importer = GoImporter()
+    sys.path_hooks.insert(0, go_importer)
+    sys.meta_path.insert(0, go_importer)
+    # sys.path_hooks = [go_importer]  # Kind of more "strict" mode.
+    # sys.meta_path = [go_importer]
+    return go_importer
