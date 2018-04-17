@@ -186,6 +186,7 @@ class GoImporter(object):
         self.go_path = None  # Confirmed path of the *.go file.
 
     def find_module(self, fullname, path=None):
+        """Find Go module, instead of a Python one, returns self if found."""
         if fullname in self.module_names:
             self.go_path = str(path)
             return self
@@ -213,6 +214,7 @@ class GoImporter(object):
         return None  # It cant Find the module.
 
     def load_module(self, fullname):
+        """Load a Go module, returns 1 Gothon instance with the Go module."""
         if fullname in sys.modules:
             return sys.modules.get(fullname)
         module = Gothon(go_file=self.go_path)
