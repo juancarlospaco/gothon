@@ -23,7 +23,7 @@ from uuid import uuid4
 
 
 __version__ = "0.5.0"
-__all__ = ("Gothon", "GoImporter", "PYTHON_MODULE_GO_TEMPLATE")
+__all__ = ("Gothon", "GoImporter", "import_hook", "PYTHON_MODULE_GO_TEMPLATE")
 
 
 PYTHON_MODULE_GO_TEMPLATE = """
