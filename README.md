@@ -38,6 +38,7 @@ Python 3.6.4 (default, Jan  5 2018, 02:35:40)
 ```
 pip install gothon
 ```
+- No dependencies, it does not install any Python dependency nor Go dependency.
 - Uninstall `pip uninstall gothon`
 
 
