@@ -152,6 +152,7 @@ Things that Ive tried and didnt work (2018, Linux):
 
 ### Contributors
 
+- **This project welcomes all Python and Go developers.**
 - **Please Star this Repo on Github !**, it helps to show up faster on searchs.
 - [Help](https://help.github.com/articles/using-pull-requests) and more [Help](https://help.github.com/articles/fork-a-repo) and Interactive Quick [Git Tutorial](https://try.github.io).
 - English is the primary default spoken language, unless explicitly stated otherwise *(eg. Dont send Translation Pull Request)*
