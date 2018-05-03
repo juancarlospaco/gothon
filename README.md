@@ -2,9 +2,11 @@
 
 Python 3 modules written on pure Go. No CFFI, no CTypes, no CGo, no PyBindGen, just import `*.go` files from Python.
 
+##### I stoped this project, [I changed Go for NIM that uses Python syntax, is faster, smaller binaries, compiles to C and JS.](https://nim-lang.org)
+
 It works using RPC. Inspired by [Cythons `pyximport`](http://cython.readthedocs.io/en/latest/src/tutorial/cython_tutorial.html?highlight=pyximport#pyximport-cython-compilation-for-developers) and [CPPImport](https://github.com/tbenthompson/cppimport#import-c-or-c-files-directly-from-python). Designed to speed up Python using Go. [![Build Status](https://travis-ci.org/juancarlospaco/gothon.svg?branch=master)](https://travis-ci.org/juancarlospaco/gothon)
 
-Open Repo access to anyone who want to contribute, just contact me. **This is a Work In Progress.**
+Open Repo access to anyone who want to contribute, just contact me.
 
 ![screenshot](https://source.unsplash.com/FqkBXo2Nkq0/850x420 "Illustrative Photo by https://unsplash.com/@stickermule")
 
